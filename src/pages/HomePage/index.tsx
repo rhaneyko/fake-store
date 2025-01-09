@@ -28,8 +28,8 @@ const HomePage: React.FC = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await ApiProducts.get<Product[]>(''); // Como a `baseURL` já contém o endpoint, deixe a string vazia
-        setProducts(response.data); // Armazene os dados dos produtos
+        const response = await ApiProducts.get<Product[]>('');
+        setProducts(response.data);
       } catch (err: any) {
         setError(err.message || 'Erro ao carregar os produtos');
       } finally {
@@ -39,10 +39,6 @@ const HomePage: React.FC = () => {
 
     fetchProducts();
   }, []);
-
-
-
-  
 
   return (
     <Container>
