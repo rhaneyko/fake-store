@@ -13,6 +13,5 @@ export default createGlobalStyle`
     align-items: center;
     justify-content: center;
     
-    font-family: 'Allerta Stencil', sans-serif;
   }
 `
