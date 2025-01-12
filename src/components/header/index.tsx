@@ -1,42 +1,19 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-
-import { 
+import React from "react";
+import {
   HeaderContainer,
-  Nav,
-  NavItem
-} from './styles'; // Estilos personalizados (opcional)
+  Logo,
+} from "./styles";
 
-const Header = () => {
+const Header: React.FC = () => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0, // Posição no topo
+      behavior: "smooth", // Animação suave
+    });
+  };
   return (
     <HeaderContainer>
-      <h1>E-commerce</h1>
-      <Nav>
-        <NavItem>
-          <NavLink 
-            to={"/"} 
-            
-          >
-            Home
-          </NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink 
-            to={"/categories"} 
-            
-          >
-            Produtos
-          </NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink 
-            to="/cart" 
-            
-          >
-            Carrinho
-          </NavLink>
-        </NavItem>
-      </Nav>
+      <Logo onClick={scrollToTop} >Fake Store</Logo>
     </HeaderContainer>
   );
 };
