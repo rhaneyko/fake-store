@@ -7,8 +7,7 @@ import {
   CartIcon,
   SearchWrapper
 } from "./styles";
-
-
+import { NavLink } from "react-router";
 
 const Header: React.FC = () => {
   const scrollToTop = () => {
@@ -21,14 +20,17 @@ const Header: React.FC = () => {
     <HeaderContainer>
       <Logo onClick={scrollToTop} >Fake Store</Logo>
       <SearchWrapper>
-
-      <SearchProduct
-        placeholder="Buscar produtos"
-        
-      />
-      <SearchIcon/>
+        <SearchProduct
+          placeholder="Search for products"
+        />
+        <SearchIcon />
       </SearchWrapper>
-      <CartIcon />
+      
+      <nav>
+        <NavLink to="/cart">
+          <CartIcon />
+        </NavLink>
+      </nav>
     </HeaderContainer>
   );
 };
