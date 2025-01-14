@@ -24,12 +24,12 @@ export const CardProduct = styled.div`
   align-items: center;
   position: relative;
   width: 270px;
-  border: 1px solid #ddd;
+  border: 1px solid #DDD;
   border-radius: 8px;
   overflow: hidden;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   padding: 16px;
-  background-color: #fff;
+  background-color: #FFF;
 `;
 
 export const AddToCart = styled.button`

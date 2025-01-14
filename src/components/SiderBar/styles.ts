@@ -16,7 +16,7 @@ export const CategoriesListItem = styled.li`
   display: flex;
   align-items: center;
   padding: 10px;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #DDD;
   border-radius: 5px;
   margin-bottom: 10px;
 `;

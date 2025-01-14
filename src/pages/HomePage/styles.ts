@@ -14,7 +14,7 @@ export const CardProduct = styled.div`
   flex-direction: column;
   align-items: center;
   width: 300px;
-  background-color: #f2e9dc;
+  background-color: #F2E9DC;
 `;
 
 export const ProductTitle = styled.h3`

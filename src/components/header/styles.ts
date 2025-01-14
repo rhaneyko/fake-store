@@ -45,7 +45,7 @@ export const SearchIcon = styled(BsSearch)`
   right: 12px;
   top: 50%;
   transform: translateY(-50%);
-  color: #aaa;
+  color: #AAA;
   font-size: 20px;
   pointer-events: none;
 `;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { FiShoppingCart } from 'react-icons/fi'; // Ícone de carrinho
+import { FiShoppingCart } from 'react-icons/fi';
 
 interface AddToCartProps {
   onClick: () => void;
