@@ -1,17 +1,16 @@
-import React, { useEffect, useState } from 'react';
-
+import React, { useEffect, useState } from "react";
 import {
     Container,
     CardsContainer,
     CardProduct,
     ProductTitle,
     ProductPrice,
-    ProductImage
-} from './styles';
-
-import { ApiGetAllProducts } from '../../services/api';
-
-import { ProductType } from '../../types/product';
+    ProductImage,
+    AddToCart
+} from "./styles";
+import { ApiGetAllProducts } from "../../services/api";
+import { ProductType } from "../../types/product";
+import { BsCartPlus } from "react-icons/bs";
 
 const Product = () => {
     const [products, setProducts] = useState<ProductType[]>([]);
@@ -21,10 +20,10 @@ const Product = () => {
     useEffect(() => {
         const fetchProducts = async () => {
             try {
-                const response = await ApiGetAllProducts.get<ProductType[]>('');
+                const response = await ApiGetAllProducts.get<ProductType[]>("");
                 setProducts(response.data);
             } catch (err: any) {
-                setError(err.message || 'Erro ao carregar os produtos');
+                setError(err.message || "Erro ao carregar os produtos");
             } finally {
                 setLoading(false);
             }
@@ -32,6 +31,10 @@ const Product = () => {
 
         fetchProducts();
     }, []);
+
+    const handleAddToCart = (id: number) => {
+        console.log(`Produto ${id} adicionado ao carrinho!`);
+    };
 
     return (
         <Container>
@@ -41,18 +44,20 @@ const Product = () => {
                 <div>{error}</div>
             ) : (
                 <CardsContainer>
-
                     {products.map((product) => (
                         <CardProduct key={product.id}>
+                            <AddToCart onClick={() => handleAddToCart(product.id)}>
+                                <BsCartPlus />
+                            </AddToCart>
                             <ProductImage src={product.image} alt={product.title} loading="lazy" />
                             <ProductTitle>{product.title}</ProductTitle>
-                            <ProductPrice>R$ {product.price.toFixed(2)}</ProductPrice>
+                            <ProductPrice>$ {product.price.toFixed(2)}</ProductPrice>
                         </CardProduct>
                     ))}
                 </CardsContainer>
             )}
         </Container>
-    )
-}
+    );
+};
 
-export default Product
+export default Product;
