@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
   HeaderContainer,
   Logo,
@@ -7,9 +8,11 @@ import {
   CartIcon,
   SearchWrapper
 } from "./styles";
+
 import { NavLink } from "react-router";
 
-const Header: React.FC = () => {
+const Header = () => {
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,

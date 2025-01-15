@@ -2,19 +2,20 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
+  width: 100%;
   gap: 20px;
   margin-top: 20px;
   padding-top: 60px;
-  width: 100%;
+  padding-bottom: 60px;
 `;
 
 export const CardsContainer = styled.div`
   display: grid;
   gap: 30px;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(4, 1fr);
 `;
 
 export const CardProduct = styled.div`

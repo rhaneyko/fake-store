@@ -11,6 +11,7 @@ import {
 import { ApiGetAllProducts } from "../../services/api";
 import { ProductType } from "../../types/product";
 import { BsCartPlus } from "react-icons/bs";
+import { NavLink } from "react-router";
 
 const Product = () => {
     const [products, setProducts] = useState<ProductType[]>([]);
@@ -49,7 +50,9 @@ const Product = () => {
                             <AddToCart onClick={() => handleAddToCart(product.id)}>
                                 <BsCartPlus />
                             </AddToCart>
-                            <ProductImage src={product.image} alt={product.title} loading="lazy" />
+                            <NavLink to={`/product/${product.id}`}>
+                                <ProductImage src={product.image} alt={product.title} loading="lazy" />
+                            </NavLink>
                             <ProductTitle>{product.title}</ProductTitle>
                             <ProductPrice>$ {product.price.toFixed(2)}</ProductPrice>
                         </CardProduct>
