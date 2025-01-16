@@ -53,3 +53,22 @@ export const SearchIcon = styled(BsSearch)`
 export const CartIcon = styled(BsCart)`
   font-size: 2rem;
 `;
+
+export const CartWrapper = styled.div`
+  position: relative;
+  display: inline-block;
+`;
+
+
+export const CartBadge = styled.span`
+  background-color: red;
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  border-radius: 50%;
+  padding: 4px 8px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translate(50%, -50%);
+`;
