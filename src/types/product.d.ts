@@ -4,4 +4,6 @@ export interface ProductType {
   price: number;
   description: string;
   image: string;
+  count: number;
+  size: string;
 }
