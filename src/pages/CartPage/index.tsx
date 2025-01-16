@@ -1,50 +1,43 @@
-import React, { useState } from "react";
+import React from "react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store/reducers/store";
+
 import {
-    Container,
-    Title,
-    CartProductsContainer,
-    CartProduct,
-    ButtonRemove,
-    ButtonAdd,
-    QuantitySelect,
-    PriceProduct
-} from "./styles";
-import { ProductType } from "../../types/product";
+  Container,
+  Title,
+  CartProductsContainer,
+  CartProduct,
+  CartProductImage,
+  CartProductTitle,
+  CartProductTitleSize,
+  CartProductTitleQuantity,
+  PriceProduct,
+} from './styles'
 
-const CartPage: React.FC = () => {
-    const [quantity, setQuantity] = useState<number>(1);
-     const [products, setProducts] = useState<ProductType[]>([]);
+const CartPage = () => {
+  const products = useSelector((state: RootState) => state.cart.products);
 
-    const changeQuantity = (delta: number) => {
-        setQuantity((prevQuantity) => Math.max(1, prevQuantity + delta)); // Garante que a quantidade mínima seja 1
-    };
+  return (
+    <Container>
+      <Title>Meu Carrinho</Title>
 
-    
-
-    return (
-        <Container>
-            <Title>Minha Sacola (10)</Title>
-            <CartProductsContainer>
-                <CartProduct>
-                    <img
-                        src="https://www.w3schools.com/images/w3schools_green.jpg"
-                        alt="Produto"
-                    />
-                    <div>
-                        <p><strong>Nome do Produto</strong></p>
-                        <p>Descrição do produto detalhada e informativa.</p>
-                    </div>
-                    <div className="quantity-controls">
-                        <ButtonRemove onClick={() => changeQuantity(-1)}>-</ButtonRemove>
-                        <QuantitySelect type="number" value={quantity} readOnly />
-                        <ButtonAdd onClick={() => changeQuantity(1)}>+</ButtonAdd>
-                    </div>
-                    <PriceProduct>R$200</PriceProduct>
-
-                </CartProduct>
-            </CartProductsContainer>
-        </Container>
-    );
+      <CartProductsContainer>
+        {products.length === 0 ? (
+            <p>O carrinho está vázio. Adicione produtos para continuar.</p>
+          ) : (
+            
+        products.map((product) => (
+          <CartProduct key={`${product.id}-${product.size}`}>
+            <CartProductImage src={product.image} alt={product.title} />
+            <CartProductTitle>{product.title}</CartProductTitle>
+            <CartProductTitleSize>Tamanho: {product.size}</CartProductTitleSize>
+            <CartProductTitleQuantity>Quantidade: {product.count}</CartProductTitleQuantity>
+            <PriceProduct>Preço: ${(product.price * product.count).toFixed(2)}</PriceProduct>
+          </CartProduct>
+        )))}
+      </CartProductsContainer>
+    </Container>
+  );
 };
 
 export default CartPage;

@@ -17,6 +17,9 @@ export const Title = styled.h1`
 `;
 
 export const CartProductsContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 100%;
   max-width: 800px;
   background-color: #fff;
@@ -68,6 +71,14 @@ export const CartProduct = styled.div`
     gap: 5px;
   }
 `;
+
+export const CartProductImage = styled.img``;
+
+export const CartProductTitle = styled.p``;
+
+export const CartProductTitleSize = styled.p``;
+
+export const CartProductTitleQuantity = styled.p``;
 
 export const ButtonRemove = styled.button`
   background-color: #f44336;
