@@ -2,9 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { ApiGetAllProducts } from "../../services/api";
-
+import { addProduct } from "../../store/slices/cartSlice";
 import { ProductType } from "../../types/product";
-
 import {
   Container,
   ProductContentIntro,
@@ -27,14 +26,39 @@ import Header from "../../components/header";
 
 const ProductDetails = () => {
   const { id } = useParams<{ id: string }>();
+  const dispatch = useDispatch();
   const [product, setProduct] = useState<ProductType | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
   const [count, setCount] = useState<number>(1);
-
+  const [selectedSize, setSelectedSize] = useState<string>("");
 
   const changeQuantity = (delta: number) => {
     setCount((prev) => Math.max(1, prev + delta));
+  };
+
+  const handleSizeChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedSize(e.target.value);
+  };
+
+  const handleAddToCart = () => {
+    if (!selectedSize) {
+      alert("Por favor, selecione um tamanho antes de adicionar ao carrinho.");
+      return;
+    }
+
+    const productToAdd = {
+      id: product!.id,
+      title: product!.title,
+      price: product!.price,
+      description: product!.description,
+      image: product!.image,
+      count,
+      size: selectedSize,
+    };
+
+    dispatch(addProduct({ product: productToAdd, count }));
+    alert("Produto adicionado ao carrinho!");
   };
 
   useEffect(() => {
@@ -67,20 +91,20 @@ const ProductDetails = () => {
             <ProductContentIntro>
               <ProductTitle>{product.title}</ProductTitle>
               <ProductPrice>$ {product.price.toFixed(2)}</ProductPrice>
-              <SizeItemSelect>
-                <SizeItemOptiion value="">Select Your Size</SizeItemOptiion>
+            </ProductContentIntro>
+            <ProductContentInteractive>
+              <SizeItemSelect onChange={handleSizeChange} value={selectedSize}>
+                <SizeItemOptiion value="">Size</SizeItemOptiion>
                 <SizeItemOptiion value="S">S</SizeItemOptiion>
                 <SizeItemOptiion value="M">M</SizeItemOptiion>
                 <SizeItemOptiion value="L">L</SizeItemOptiion>
               </SizeItemSelect>
-            </ProductContentIntro>
-            <ProductContentInteractive>
               <QuantityControls>
                 <ButtonRemove onClick={() => changeQuantity(-1)}>-</ButtonRemove>
                 <QuantitySelect type="number" value={count} readOnly />
                 <ButtonAdd onClick={() => changeQuantity(1)}>+</ButtonAdd>
               </QuantityControls>
-              <ButtonAddToCart>Add to cart</ButtonAddToCart>
+              <ButtonAddToCart onClick={handleAddToCart}>Add to cart</ButtonAddToCart>
             </ProductContentInteractive>
           </ProductContent>
         </CardProduct>

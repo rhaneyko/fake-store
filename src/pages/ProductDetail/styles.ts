@@ -3,11 +3,11 @@ import styled from "styled-components";
 export const Container = styled.div`
   display: flex;
   justify-content: center;
-  align-items: center; 
-  height: 100vh; 
-  width: 100vw; 
-  background-color: blue; 
-  box-sizing: border-box; 
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background-color: #fff;
+  box-sizing: border-box;
 `;
 
 export const CardProduct = styled.div`
@@ -15,10 +15,11 @@ export const CardProduct = styled.div`
   align-items: center;
   justify-content: space-between;
   background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   padding: 20px;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -36,6 +37,7 @@ export const ProductContentIntro = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  margin-left: 15px;
   @media (max-width: 768px) {
     text-align: center;
   }
@@ -102,7 +104,7 @@ export const ProductContent = styled.div`
 export const ProductTitle = styled.h3`
   font-size: 20px;
   color: #333;
-  margin: 8px 0;
+  margin: 10px 0;
   text-align: center;
 
   @media (max-width: 1024px) {
@@ -122,7 +124,7 @@ export const ProductPrice = styled.p`
   font-size: 18px;
   color: #28a745;
   font-weight: bold;
-  margin: 8px 0;
+  margin: 15px 0 0 0;
 
   @media (max-width: 1024px) {
     font-size: 15px;
@@ -138,8 +140,14 @@ export const ProductPrice = styled.p`
 `;
 
 export const SizeItemSelect = styled.select`
+  width: 110px;
+  background: white;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  padding: 10px 30px 10px 10px;
+  position: relative;
+  margin: 15px;
 
-  
   @media (max-width: 768px) {
     width: 100%;
   }
@@ -149,7 +157,7 @@ export const SizeItemOptiion = styled.option``;
 
 export const QuantityControls = styled.div`
   display: flex;
-  margin: 15px ;
+  margin: 15px;
 
   @media (max-width: 768px) {
     margin: 10px;
@@ -167,7 +175,7 @@ export const ButtonRemove = styled.button`
   background-color: #f44336;
   color: #fff;
   border: none;
-  border-radius: 5px 0 0 5px;
+  border-radius: 20px 0 0 20px;
   width: 30px;
   height: 46px;
   font-size: 18px;
@@ -199,7 +207,7 @@ export const ButtonAdd = styled.button`
   color: #fff;
   background-color: #4caf50;
   border: 1px solid #4caf50;
-  border-radius: 0 5px 5px 0;
+  border-radius: 0 20px 20px 0;
   cursor: pointer;
   transition: background-color 0.2s ease;
 
@@ -221,7 +229,9 @@ export const ButtonAdd = styled.button`
 
 export const ProductContentInteractive = styled.div`
   display: flex;
-  justify-content: flex-end;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
   margin: 40px 0 0 0;
 
   @media (max-width: 768px) {
@@ -263,11 +273,12 @@ export const QuantitySelect = styled.input`
 `;
 
 export const ButtonAddToCart = styled.button`
+  max-width: 200px;
   padding: 10px 20px;
   margin: 15px;
   background-color: #27ae60;
   border: none;
-  border-radius: 4px;
+  border-radius: 20px;
   border: 1px solid #27ae60;
   color: #000;
   font-size: 1rem;
