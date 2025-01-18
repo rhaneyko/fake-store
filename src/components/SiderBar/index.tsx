@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { ApiGetAllCategories } from "../../services/api";
+import { useCategoryContext } from "../../context/CategoryContext";
 
 import {
   SideBarContainer,
   CategoriesList,
   CategoriesListItem,
-  CategoriesListItemCheckbox
-} from './styles'
+  CategoriesListItemCheckbox,
+} from "./styles";
 
 const CategoryList: React.FC = () => {
   const [categories, setCategories] = useState<string[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
-  const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
+
+  const { selectedCategories, setSelectedCategories } = useCategoryContext();
 
   useEffect(() => {
     const fetchCategories = async () => {
@@ -28,7 +30,6 @@ const CategoryList: React.FC = () => {
 
     fetchCategories();
   }, []);
-
 
   const handleCheckboxChange = (category: string) => {
     setSelectedCategories((prevSelected) =>
