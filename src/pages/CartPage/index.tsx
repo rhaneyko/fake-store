@@ -47,6 +47,7 @@ const CartPage = () => {
   return (
     <CartTableContainer>
       <h1 className="cart-title">Shopping Cart</h1>
+<div>
 
       {products.length === 0 ? (
         <p className="empty-cart-message">
@@ -82,17 +83,17 @@ const CartPage = () => {
                     <QuantityControls>
                       <ButtonRemoveQuantity
                         onClick={() => handleDecrease(product.id, product.size)}
-                      >
+                        >
                         -
                       </ButtonRemoveQuantity>
                       <QuantitySelect
                         type="number"
                         value={product.count}
                         readOnly
-                      />
+                        />
                       <ButtonAddQuantity
                         onClick={() => handleIncrease(product.id, product.size)}
-                      >
+                        >
                         +
                       </ButtonAddQuantity>
                     </QuantityControls>
@@ -101,7 +102,7 @@ const CartPage = () => {
                   <td>
                     <RemoveButton
                       onClick={() => handleRemove(product.id, product.size)}
-                    >
+                      >
                       X
                     </RemoveButton>
                   </td>
@@ -119,6 +120,7 @@ const CartPage = () => {
           </TotalContainer>
         </>
       )}
+      </div>
     </CartTableContainer>
   );
 };
