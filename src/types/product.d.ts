@@ -6,6 +6,7 @@ export interface ProductType {
   image: string;
   count: number;
   size: string;
+  category: string;
 }
 
 interface CartProduct {

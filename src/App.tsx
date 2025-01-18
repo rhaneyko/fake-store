@@ -1,14 +1,16 @@
 import React from 'react';
 import { ThemeProvider } from 'styled-components';
 import theme from './styles/theme/theme';
-import HomePage from './pages/HomePage';
-import Header from './components/header';
+
 import RoutesApp from './routes';
+import { CategoryProvider } from './context/CategoryContext';
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
+      <CategoryProvider>
       <RoutesApp/>
+      </CategoryProvider>
     </ThemeProvider>
   );
 }
