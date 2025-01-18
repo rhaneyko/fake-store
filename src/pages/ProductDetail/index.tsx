@@ -46,19 +46,21 @@ const ProductDetails = () => {
       alert("Por favor, selecione um tamanho antes de adicionar ao carrinho.");
       return;
     }
-
-    const productToAdd = {
-      id: product!.id,
-      title: product!.title,
-      price: product!.price,
-      description: product!.description,
-      image: product!.image,
-      count,
-      size: selectedSize,
-    };
-
-    dispatch(addProduct({ product: productToAdd, count }));
-    alert("Produto adicionado ao carrinho!");
+  
+    if (product) {
+      dispatch(
+        addProduct({
+          id: product.id,
+          title: product.title,
+          size: selectedSize,
+          color: "Black", // Adicione a cor se necessário
+          price: product.price,
+          count,
+          image: product.image,
+        })
+      );
+      alert("Produto adicionado ao carrinho!");
+    }
   };
 
   useEffect(() => {
