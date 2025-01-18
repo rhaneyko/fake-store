@@ -7,3 +7,13 @@ export interface ProductType {
   count: number;
   size: string;
 }
+
+interface CartProduct {
+  id: number;
+  title: string;
+  size: string;
+  color?: string;
+  price: number;
+  count: number;
+  image: string;
+}

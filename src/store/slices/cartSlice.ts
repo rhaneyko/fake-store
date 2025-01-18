@@ -1,57 +1,65 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-export interface ProductType {
+interface CartProduct {
   id: number;
   title: string;
-  price: number;
-  description: string;
-  image: string;
-  count: number;
   size: string;
+  color?: string;
+  price: number;
+  count: number;
+  image: string;
 }
 
 interface CartState {
-  products: ProductType[];
+  products: CartProduct[];
 }
 
 const initialState: CartState = {
-  products: [], // Estado inicial do carrinho (vazio)
+  products: [],
 };
 
 const cartSlice = createSlice({
-  name: "cart", // Nome do slice
-  initialState, // Estado inicial
+  name: "cart",
+  initialState,
   reducers: {
-    // Adicionar produto ao carrinho
-    addProduct: (state, action: PayloadAction<{ product: ProductType; count: number }>) => {
-      const { product, count } = action.payload;
-
-      
+    // Adiciona um produto ao carrinho
+    addProduct: (state, action: PayloadAction<CartProduct>) => {
       const existingProduct = state.products.find(
-        (p) => p.id === product.id && p.size === product.size
+        (p) => p.id === action.payload.id && p.size === action.payload.size
       );
 
       if (existingProduct) {
-        existingProduct.count += count; // Incrementa a quantidade
+        existingProduct.count += action.payload.count;
       } else {
-        state.products.push({ ...product, count }); // Adiciona novo produto
+        state.products.push(action.payload);
       }
     },
-
-    // Remover produto do carrinho
-    removeProduct: (state, action: PayloadAction<number>) => {
-      state.products = state.products.filter((product) => product.id !== action.payload);
+    // Aumenta a quantidade de um produto
+    increaseQuantity: (state, action: PayloadAction<{ id: number; size: string }>) => {
+      const product = state.products.find(
+        (p) => p.id === action.payload.id && p.size === action.payload.size
+      );
+      if (product) {
+        product.count += 1;
+      }
     },
-
-    // Limpar o carrinho
-    clearCart: (state) => {
-      state.products = [];
+    // Diminui a quantidade de um produto
+    decreaseQuantity: (state, action: PayloadAction<{ id: number; size: string }>) => {
+      const product = state.products.find(
+        (p) => p.id === action.payload.id && p.size === action.payload.size
+      );
+      if (product && product.count > 1) {
+        product.count -= 1;
+      }
+    },
+    // Remove um produto do carrinho
+    removeItem: (state, action: PayloadAction<{ id: number; size: string }>) => {
+      state.products = state.products.filter(
+        (p) => !(p.id === action.payload.id && p.size === action.payload.size)
+      );
     },
   },
 });
 
-// Exporta as ações para uso nos componentes
-export const { addProduct, removeProduct, clearCart } = cartSlice.actions;
-
-// Exporta o reducer para ser usado na store
+export const { addProduct, increaseQuantity, decreaseQuantity, removeItem } = cartSlice.actions;
 export default cartSlice.reducer;

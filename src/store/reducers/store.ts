@@ -1,13 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
-import cartReducer from "../slices/cartSlice"; // Ajuste o caminho
+import cartReducer from "../slices/cartSlice";
 
 const store = configureStore({
   reducer: {
-    cart: cartReducer, // Adiciona o cart slice ao estado global
+    cart: cartReducer,
   },
 });
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
-
 export default store;
