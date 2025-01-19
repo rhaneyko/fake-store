@@ -22,7 +22,6 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    // Adiciona um produto ao carrinho
     addProduct: (state, action: PayloadAction<CartProduct>) => {
       const existingProduct = state.products.find(
         (p) => p.id === action.payload.id && p.size === action.payload.size
@@ -34,7 +33,6 @@ const cartSlice = createSlice({
         state.products.push(action.payload);
       }
     },
-    // Aumenta a quantidade de um produto
     increaseQuantity: (state, action: PayloadAction<{ id: number; size: string }>) => {
       const product = state.products.find(
         (p) => p.id === action.payload.id && p.size === action.payload.size
@@ -43,7 +41,6 @@ const cartSlice = createSlice({
         product.count += 1;
       }
     },
-    // Diminui a quantidade de um produto
     decreaseQuantity: (state, action: PayloadAction<{ id: number; size: string }>) => {
       const product = state.products.find(
         (p) => p.id === action.payload.id && p.size === action.payload.size
@@ -52,7 +49,6 @@ const cartSlice = createSlice({
         product.count -= 1;
       }
     },
-    // Remove um produto do carrinho
     removeItem: (state, action: PayloadAction<{ id: number; size: string }>) => {
       state.products = state.products.filter(
         (p) => !(p.id === action.payload.id && p.size === action.payload.size)
