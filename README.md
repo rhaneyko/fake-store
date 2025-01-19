@@ -1,46 +1,80 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Fake Store
 
-## Available Scripts
+Fake Store é uma aplicação web simulando uma loja online. Este projeto permite aos usuários navegar por produtos, visualizar detalhes e adicionar itens ao carrinho de compras. Ele é ideal para fins educacionais e demonstrações de habilidades em desenvolvimento web utilizando tecnologias modernas.
 
-In the project directory, you can run:
+**Ainda estou trabalhando na estilização do projeto, o foco agora foi mais a funcionabilidade.**
 
-### `npm start`
+## 🔥 Funcionalidades
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- Listagem de produtos
+- Visualização detalhada de cada produto
+- Adição de itens ao carrinho de compras
+- Gerenciamento de itens no carrinho
+- Design responsivo para diferentes tamanhos de tela
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 🚀 Tecnologias Utilizadas
 
-### `npm test`
+Este projeto foi desenvolvido utilizando as seguintes tecnologias:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **React**: Biblioteca JavaScript para construção de interfaces de usuário.
+- **Redux**: Para gerenciar o estado global da aplicação.
+- **React Router**: Para navegação entre as páginas da aplicação.
+- **Fake Store API**: API pública para fornecer dados fictícios de produtos.
 
-### `npm run build`
+## 🛠️ Instalação e Execução
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Siga os passos abaixo para rodar o projeto localmente:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+1. Clone este repositório:
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+   
+   git clone https://github.com/rhaneyko/fake-store.git
 
-### `npm run eject`
+2. Acesse o diretório do projeto:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+   
+   cd fake-store
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+3. Instale as dependências:
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+   
+   npm install
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+4. Inicie o servidor de desenvolvimento:
 
-## Learn More
+   
+   npm start
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+5. Acesse a aplicação no navegador:
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+   http://localhost:3000
+
+## 📦 Estrutura do Projeto
+
+A estrutura básica do projeto é organizada da seguinte maneira:
+src/
+├── components/      # Componentes reutilizáveis
+├── pages/           # Páginas da aplicação
+├── store/           # Configuração do Redux
+├── assets/          # Imagens, ícones, etc.
+├── App.js           # Componente principal da aplicação
+├── index.js         # Ponto de entrada do Reac
+
+## 📝 Contribuindo
+
+Contribuições são sempre bem-vindas! Para contribuir:
+
+1. Faça um fork do repositório.
+2. Crie uma branch para sua funcionalidade/correção de bug: `git checkout -b minha-feature`.
+3. Faça as alterações necessárias e commit: `git commit -m 'Minha nova feature'`.
+4. Envie suas alterações: `git push origin minha-feature`.
+5. Abra um Pull Request.
+
+## 📄 Licença
+
+Este projeto está licenciado sob a licença [MIT](LICENSE).
+
+## 🌟 Agradecimentos
+
+- [Fake Store API](https://fakestoreapi.com/) pela API gratuita e fácil de usar.
