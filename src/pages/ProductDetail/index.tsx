@@ -53,7 +53,7 @@ const ProductDetails = () => {
           id: product.id,
           title: product.title,
           size: selectedSize,
-          color: "Black", // Adicione a cor se necessário
+          color: "Black",
           price: product.price,
           count,
           image: product.image,
