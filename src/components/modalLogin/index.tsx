@@ -21,11 +21,11 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, onLogout }) => {
   return ReactDOM.createPortal(
     <Overlay>
       <ModalContent>
-        <h2>Confirm Logout</h2>
-        <p>Are you sure you want to log out?</p>
+        <h2>Confirme sair</h2>
+        <p>Você tem certeza que deseja sair?</p>
         <ButtonsWrapper>
-          <CancelButton onClick={onClose}>Cancel</CancelButton>
-          <LogoutButton onClick={onLogout}>Logout</LogoutButton>
+          <CancelButton onClick={onClose}>Cancelar</CancelButton>
+          <LogoutButton onClick={onLogout}>Sair</LogoutButton>
         </ButtonsWrapper>
       </ModalContent>
     </Overlay>,
