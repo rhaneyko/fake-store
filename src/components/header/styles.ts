@@ -4,7 +4,7 @@ import { BsCart } from "react-icons/bs";
 
 export const HeaderContainer = styled.header`
   display: flex;
-  justify-content: space-between; /* Alinha os elementos nos extremos */
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   padding: 10px 20px;
@@ -23,6 +23,7 @@ export const Logo = styled.span`
 `;
 
 export const CartIcon = styled(BsCart)`
+  color: #fff;
   font-size: 2rem;
 `;
 
@@ -47,14 +48,23 @@ export const CartBadge = styled.span`
 export const RightSection = styled.div`
   display: flex;
   align-items: center;
-  gap: 20px; /* Espaço entre os itens */
+  gap: 20px;
+
+  .login-text{
+    text-decoration: none;
+  }
+`;
+
+export const LoginText = styled.span`
+  cursor: pointer;
+  color: #FFF;
+  text-decoration: none;
+  
 `;
 
 export const LogoutText = styled.span`
   cursor: pointer;
-  color: #007bff;
+  color: #fff;
   font-size: 1rem;
-  &:hover {
-    text-decoration: underline;
-  }
+  text-decoration: none;
 `;

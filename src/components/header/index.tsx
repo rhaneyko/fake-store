@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../store/reducers/store";
 import { auth } from "../../services/firebase/firebaseConfig";
 import { User } from "firebase/auth";
-import Modal from "../../components/modalLogin"; // Certifique-se de ajustar o caminho
+import Modal from "../../components/modalLogin";
 import {
   HeaderContainer,
   Logo,
@@ -12,13 +12,14 @@ import {
   CartBadge,
   RightSection,
   LogoutText,
+  LoginText
 } from "./styles";
 
 import { NavLink } from "react-router";
 
 const Header = () => {
   const [user, setUser] = useState<User | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false); // Controle do modal
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((currentUser: User | null) => {
@@ -38,12 +39,11 @@ const Header = () => {
   const cartProducts = useSelector((state: RootState) => state.cart.products);
   const totalItems = cartProducts.reduce((sum, product) => sum + product.count, 0);
 
-  // Lógica de Logout
   const handleLogout = async () => {
     try {
       await auth.signOut();
       setIsModalOpen(false);
-      setUser(null); // Limpa o estado do usuário
+      setUser(null);
     } catch (error) {
       console.error("Error logging out:", error);
     }
@@ -52,10 +52,8 @@ const Header = () => {
   return (
     <>
       <HeaderContainer>
-        {/* Logo no canto esquerdo */}
         <Logo onClick={scrollToTop}>Fake Store</Logo>
 
-        {/* Carrinho e Logout no canto direito */}
         <RightSection>
           <NavLink to="/cart">
             <CartWrapper>
@@ -66,14 +64,13 @@ const Header = () => {
           {user ? (
             <LogoutText onClick={() => setIsModalOpen(true)}>Logout</LogoutText>
           ) : (
-            <NavLink to="/login">
-              <p>Login</p>
+            <NavLink to="/login" className="login-text">
+              <LoginText>Login</LoginText>
             </NavLink>
           )}
         </RightSection>
       </HeaderContainer>
 
-      {/* Modal */}
       <Modal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
